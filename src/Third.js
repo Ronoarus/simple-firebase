@@ -13,6 +13,14 @@ export function Third() {
     });
   }, []);
 
+  const logIn = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  }
+  const logOut = () => {
+    auth.signOut();
+  }
+
   return (
     <div className="contentWrapper">
       <h2>Firebase Auth</h2>
@@ -23,9 +31,7 @@ export function Third() {
             variant="contained"
             color="primary"
             component="label"
-            onClick={() => {
-              auth.signOut();
-            }}
+            onClick={logOut}
           >
             Выйти
           </Button>
@@ -35,12 +41,7 @@ export function Third() {
           variant="contained"
           color="primary"
           component="label"
-          onClick={() => {
-            var provider = new firebase.auth.GoogleAuthProvider();
-            auth.signInWithPopup(provider).then(function (result) {
-              console.log("dd", result);
-            });
-          }}
+          onClick={logIn}
         >
           Войти с помощью Google
         </Button>
