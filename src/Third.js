@@ -8,7 +8,7 @@ export function Third() {
   const [user, setUser] = React.useState();
 
   React.useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user) => {
       setUser(user);
     });
   }, []);
